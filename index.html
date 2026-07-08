@@ -133,6 +133,10 @@ ul { list-style: none; }
   border-radius: 50%;
   transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), width 200ms ease, height 200ms ease, background 200ms ease;
 }
+body.cursor-off, body.cursor-off * { cursor: auto !important; }
+body.cursor-off #cursor,
+body.cursor-off #cursor-ring { opacity: 0; visibility: hidden; }
+
 body.cursor-hover #cursor-ring {
   width: 60px; height: 60px;
   background: oklch(0.79 0.135 205 / 0.25);
@@ -2446,6 +2450,31 @@ document.querySelectorAll('[data-magnet]').forEach(el => {
     el.style.transform = '';
   });
 });
+
+/* ============================================================
+   IFRAME CURSOR HANDOFF
+   Hide the custom cursor whenever the mouse is over an iframe
+   (Google Maps, Facebook Page Plugin) — the parent page stops
+   getting mousemove events there, so the custom cursor would
+   otherwise freeze. Let the native cursor take over inside.
+   ============================================================ */
+function bindIframeCursor(iframe) {
+  if (iframe.dataset.cursorBound) return;
+  iframe.dataset.cursorBound = '1';
+  iframe.addEventListener('mouseenter', () => document.body.classList.add('cursor-off'));
+  iframe.addEventListener('mouseleave', () => document.body.classList.remove('cursor-off'));
+}
+document.querySelectorAll('iframe').forEach(bindIframeCursor);
+// Also catch iframes that get injected later (Facebook SDK)
+new MutationObserver(mutations => {
+  for (const m of mutations) {
+    for (const n of m.addedNodes) {
+      if (n.nodeType !== 1) continue;
+      if (n.tagName === 'IFRAME') bindIframeCursor(n);
+      n.querySelectorAll && n.querySelectorAll('iframe').forEach(bindIframeCursor);
+    }
+  }
+}).observe(document.body, { childList: true, subtree: true });
 </script>
 
 
