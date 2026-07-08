@@ -1494,6 +1494,19 @@ body.cursor-hover #cursor-ring {
 }
 .feed__fallback a:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--flamingo); }
 
+
+.card--map { padding: 0; overflow: hidden; }
+.card--map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  border: 0;
+}
+@media (max-width: 720px) {
+  .card--map iframe { min-height: 340px; }
+}
+
 /* ============================================================
    REVEAL
    ============================================================ */
@@ -1636,6 +1649,50 @@ body.cursor-hover #cursor-ring {
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "IceCreamShop",
+  "name": "Flamingo Crossing",
+  "description": "Homemade tropical ice cream on Duval Street, Key West. Real fruit gelato, sorbets, and small-batch flavors. The menu changes daily.",
+  "email": "flamingocrossing@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1105 Duval St",
+    "addressLocality": "Key West",
+    "addressRegion": "FL",
+    "postalCode": "33040",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.5498,
+    "longitude": -81.8017
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "11:00",
+    "closes": "23:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/flamingocrossing.keywest",
+    "https://www.instagram.com/flamingo_crossing/"
+  ],
+  "servesCuisine": "Ice cream",
+  "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
+  "priceRange": "$",
+  "hasMenu": {
+    "@type": "Menu",
+    "name": "The Daily Board",
+    "description": "A rotating tasting board of homemade tropical gelato and sorbets — always-in flavors plus seasonal specials."
+  },
+  "makesOffer": [
+    {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "T-shirts (in-shop only)"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Gift cards (in-shop only)"}}
+  ]
+}
+</script>
 </head>
 <body class="">
 
@@ -2127,34 +2184,7 @@ body.cursor-hover #cursor-ring {
         </a>
       </div>
 
-      <div class="card card--map reveal is-in" aria-label="Approximate location of Flamingo Crossing on Duval Street">
-        <svg class="map-svg" viewBox="0 0 600 500" preserveAspectRatio="none" aria-hidden="true">
-          <!-- water background -->
-          <rect width="600" height="500" fill="oklch(0.788 0.073 205)"></rect>
-          <!-- land -->
-          <path d="M0 60 Q100 40 200 80 T400 90 T600 70 L600 500 L0 500 Z" fill="oklch(0.88 0.155 115 / 0.85)"></path>
-          <path d="M0 120 Q100 100 220 130 T450 140 T600 130 L600 500 L0 500 Z" fill="oklch(0.965 0.032 78)"></path>
-          <!-- streets -->
-          <path d="M0 200 L600 250" stroke="#3A1140" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 6"></path>
-          <path d="M0 260 L600 310" stroke="#3A1140" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 6"></path>
-          <path d="M0 320 L600 370" stroke="#3A1140" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 6"></path>
-          <path d="M0 380 L600 430" stroke="#3A1140" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 6"></path>
-          <!-- Duval Street diagonal -->
-          <path d="M40 470 Q300 240 560 60" stroke="#3A1140" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.85"></path>
-          <path d="M40 470 Q300 240 560 60" stroke="oklch(0.965 0.032 78)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="8 8"></path>
-          <text x="130" y="440" font-family="Space Grotesk" font-size="13" font-weight="700" letter-spacing="4" fill="#3A1140" opacity="0.7">DUVAL ST</text>
-          <text x="500" y="440" font-family="Space Grotesk" font-size="10" letter-spacing="3" fill="#3A1140" opacity="0.5">GULF OF MEXICO ↑</text>
-          <text x="30" y="120" font-family="Space Grotesk" font-size="10" letter-spacing="3" fill="#3A1140" opacity="0.5">ATLANTIC ↓</text>
-        </svg>
-        <div class="map-marker">
-          <div class="map-marker__pin">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FFF4E4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z"></path>
-              <circle cx="12" cy="9" r="2.5" fill="#FFF4E4" stroke="none"></circle>
-            </svg>
-          </div>
-          <div class="map-marker__label">1105 Duval · You're here</div>
-        </div>
+      <div class="card card--map reveal is-in" aria-label="Approximate location of Flamingo Crossing on Duval Street"><iframe src="https://maps.google.com/maps?q=1105%20Duval%20St%2C%20Key%20West%2C%20FL%2033040&t=&z=17&ie=UTF8&iwloc=&output=embed" title="Map of 1105 Duval St, Key West, FL 33040" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
       </div>
     </div>
   </div>
