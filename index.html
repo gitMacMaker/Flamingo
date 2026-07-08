@@ -9,13 +9,23 @@
 <meta property="og:title" content="Flamingo Crossing — Key West&#39;s Tropical Ice Cream Flock">
 <meta property="og:description" content="Homemade tropical gelato &amp; sorbets on Duval St. The board changes daily. Sugar-free options. Open till 11.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Flamingo Crossing — Homemade tropical ice cream on Duval Street, Key West">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flamingo Crossing">
+<meta name="twitter:description" content="Homemade tropical ice cream on Duval Street, Key West. Real fruit. Menu rotates daily.">
+<meta name="twitter:image" content="/og-image.png">
 <meta property="og:locale" content="en_US">
 
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 <link href="./Flamingo_files/css2" rel="stylesheet">
 
-<link rel="icon" href="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;circle cx=&#39;50&#39; cy=&#39;50&#39; r=&#39;42&#39; fill=&#39;%23FF5C8A&#39; stroke=&#39;%233A1140&#39; stroke-width=&#39;6&#39;/&gt;&lt;path d=&#39;M55 25 Q35 45 40 65 Q60 60 65 40 Z&#39; fill=&#39;%233A1140&#39;/&gt;&lt;/svg&gt;">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="256x256" href="/favicon.png">
 
 <style>
 /* ============================================================
@@ -1511,6 +1521,77 @@ body.cursor-hover #cursor-ring {
   .card--map iframe { min-height: 340px; }
 }
 
+
+/* ============================================================
+   THE SCENE — photo gallery placeholders
+   ============================================================ */
+.gallery {
+  background: var(--paper);
+  border-top: var(--border);
+  border-bottom: var(--border);
+}
+.gallery__head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 60px;
+}
+.gallery__head .eyebrow { justify-content: center; }
+.gallery__head .eyebrow::before { display: none; }
+.gallery__sub {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.4vw, 19px);
+  color: var(--ink);
+  opacity: 0.8;
+}
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.polaroid {
+  background: var(--cream);
+  border: var(--border);
+  padding: 14px 14px 30px;
+  box-shadow: var(--shadow-lift);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms ease;
+}
+.polaroid:nth-child(1) { transform: rotate(-1.5deg); }
+.polaroid:nth-child(2) { transform: rotate(1.5deg); }
+.polaroid:nth-child(3) { transform: rotate(-0.5deg); }
+.polaroid:nth-child(4) { transform: rotate(1deg); }
+.polaroid:nth-child(5) { transform: rotate(-2deg); }
+.polaroid:nth-child(6) { transform: rotate(0.5deg); }
+.polaroid:hover { transform: rotate(0) translate(0, -4px); box-shadow: var(--shadow-hover); }
+.polaroid__frame {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, oklch(0.88 0.09 8), oklch(0.88 0.08 205));
+  border: 2px solid var(--ink);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.polaroid__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.polaroid__ph {
+  width: 56px; height: 56px;
+  opacity: 0.35;
+}
+.polaroid__cap {
+  margin-top: 14px;
+  font-family: var(--font-script);
+  font-size: clamp(20px, 1.9vw, 26px);
+  line-height: 1.1;
+  text-align: center;
+  color: var(--ink);
+}
+@media (max-width: 900px) {
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+@media (max-width: 500px) {
+  .gallery__grid { grid-template-columns: 1fr; }
+}
+
 /* ============================================================
    REVEAL
    ============================================================ */
@@ -2270,6 +2351,81 @@ body.cursor-hover #cursor-ring {
 </section>
 
 
+
+
+<!-- THE SCENE — photo gallery -->
+<section class="section gallery">
+  <div class="container">
+    <div class="gallery__head reveal">
+      <span class="eyebrow">The Scene</span>
+      <h2 class="h-serif">Snapshots from <em>Duval Street.</em></h2>
+      <p class="gallery__sub">Real photos coming — the owner's phone is stuffed with them. For now, imagine the scene.</p>
+    </div>
+
+    <div class="gallery__grid">
+      <figure class="polaroid reveal">
+        <div class="polaroid__frame">
+          <!-- Owner: replace with <img src="/photos/the-pink-door.jpg" alt="The pink door"> -->
+          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <figcaption class="polaroid__cap">The pink door</figcaption>
+      </figure>
+      <figure class="polaroid reveal">
+        <div class="polaroid__frame">
+          <!-- Owner: replace with <img src="/photos/behind-the-counter.jpg" alt="Behind the counter"> -->
+          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <figcaption class="polaroid__cap">Behind the counter</figcaption>
+      </figure>
+      <figure class="polaroid reveal">
+        <div class="polaroid__frame">
+          <!-- Owner: replace with <img src="/photos/cotton-candy-stack.jpg" alt="Cotton candy stack"> -->
+          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <figcaption class="polaroid__cap">Cotton candy stack</figcaption>
+      </figure>
+      <figure class="polaroid reveal">
+        <div class="polaroid__frame">
+          <!-- Owner: replace with <img src="/photos/todays-board.jpg" alt="Today's board"> -->
+          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <figcaption class="polaroid__cap">Today's board</figcaption>
+      </figure>
+      <figure class="polaroid reveal">
+        <div class="polaroid__frame">
+          <!-- Owner: replace with <img src="/photos/a-busy-saturday.jpg" alt="A busy Saturday"> -->
+          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <figcaption class="polaroid__cap">A busy Saturday</figcaption>
+      </figure>
+      <figure class="polaroid reveal">
+        <div class="polaroid__frame">
+          <!-- Owner: replace with <img src="/photos/the-flock.jpg" alt="The flock"> -->
+          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <figcaption class="polaroid__cap">The flock</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <!-- IN THE SHOP -->
 <section class="section shop">
