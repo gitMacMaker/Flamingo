@@ -1522,74 +1522,49 @@ body.cursor-hover #cursor-ring {
 }
 
 
+
 /* ============================================================
-   THE SCENE — photo gallery placeholders
+   BUBBA'S — awards callout with rosette badge
    ============================================================ */
-.gallery {
+.awards {
   background: var(--paper);
   border-top: var(--border);
   border-bottom: var(--border);
 }
-.gallery__head {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 60px;
+.awards__grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.gallery__head .eyebrow { justify-content: center; }
-.gallery__head .eyebrow::before { display: none; }
-.gallery__sub {
-  margin-top: 16px;
+@media (max-width: 780px) {
+  .awards__grid { grid-template-columns: 1fr; text-align: center; }
+  .awards__body { max-width: 100% !important; }
+}
+.awards__badge {
+  width: clamp(200px, 28vw, 300px);
+  aspect-ratio: 5/6;
+  justify-self: center;
+  animation: floatY 5s ease-in-out infinite;
+}
+.awards__badge svg { display: block; width: 100%; height: 100%; }
+.awards__body { max-width: 52ch; }
+.awards__body .eyebrow { color: var(--magenta); }
+.awards__body h2 { margin-bottom: 20px; }
+.awards__body p {
   font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(15px, 1.4vw, 19px);
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.5;
   color: var(--ink);
-  opacity: 0.8;
+  margin-top: 16px;
 }
-.gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-.polaroid {
-  background: var(--cream);
-  border: var(--border);
-  padding: 14px 14px 30px;
-  box-shadow: var(--shadow-lift);
-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms ease;
-}
-.polaroid:nth-child(1) { transform: rotate(-1.5deg); }
-.polaroid:nth-child(2) { transform: rotate(1.5deg); }
-.polaroid:nth-child(3) { transform: rotate(-0.5deg); }
-.polaroid:nth-child(4) { transform: rotate(1deg); }
-.polaroid:nth-child(5) { transform: rotate(-2deg); }
-.polaroid:nth-child(6) { transform: rotate(0.5deg); }
-.polaroid:hover { transform: rotate(0) translate(0, -4px); box-shadow: var(--shadow-hover); }
-.polaroid__frame {
-  aspect-ratio: 4/3;
-  background: linear-gradient(135deg, oklch(0.88 0.09 8), oklch(0.88 0.08 205));
-  border: 2px solid var(--ink);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-.polaroid__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.polaroid__ph {
-  width: 56px; height: 56px;
-  opacity: 0.35;
-}
-.polaroid__cap {
-  margin-top: 14px;
+.awards__body p em {
   font-family: var(--font-script);
-  font-size: clamp(20px, 1.9vw, 26px);
-  line-height: 1.1;
-  text-align: center;
-  color: var(--ink);
-}
-@media (max-width: 900px) {
-  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-}
-@media (max-width: 500px) {
-  .gallery__grid { grid-template-columns: 1fr; }
+  font-style: normal;
+  font-size: 1.3em;
+  color: var(--magenta);
 }
 
 /* ============================================================
@@ -1984,6 +1959,45 @@ body.cursor-hover #cursor-ring {
   </div>
 </section>
 
+
+<!-- BUBBA'S AWARDS -->
+<section class="section awards" id="bubbas">
+  <div class="container">
+    <div class="awards__grid">
+      <div class="awards__badge reveal" aria-hidden="true">
+        <svg viewBox="0 0 240 288" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ribbon tails -->
+          <path d="M78 195 L52 278 L88 258 L120 285 L120 195 Z" fill="var(--flamingo)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M162 195 L188 278 L152 258 L120 285 L120 195 Z" fill="var(--magenta)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+          <!-- Jagged rosette -->
+          <g transform="translate(120 108)">
+            <path d="M0 -95 L14 -68 L44 -80 L44 -47 L78 -34 L60 -8 L80 22 L46 34 L46 68 L14 58 L0 92 L-14 58 L-46 68 L-46 34 L-80 22 L-60 -8 L-78 -34 L-44 -47 L-44 -80 L-14 -68 Z" fill="var(--keylime)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+            <circle cx="0" cy="0" r="58" fill="var(--flamingo)" stroke="var(--ink)" stroke-width="3.5"/>
+            <circle cx="0" cy="0" r="45" fill="var(--cream)" stroke="var(--ink)" stroke-width="2.5"/>
+            <text x="0" y="6" text-anchor="middle" font-family="'Bagel Fat One', sans-serif" font-size="42" fill="var(--ink)">7&#215;</text>
+            <text x="0" y="30" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="8" font-weight="700" letter-spacing="1.6" fill="var(--ink)">BUBBA'S WINNER</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="awards__body reveal">
+        <span class="eyebrow">Best of the Island</span>
+        <h2 class="h-serif">Seven Bubba's, <em>in a row.</em></h2>
+        <p>
+          The <b>Bubba's</b> are Key West's locals'-choice awards — an annual popularity vote run
+          by the <i>Konk Life</i> weekly, where residents crown the island's best in every
+          category from breakfast to buskers.
+        </p>
+        <p>
+          For seven years running, the flock has taken home <em>Best Ice Cream / Gelato.</em>
+          The ribbons live on the wall behind the counter — come read them while your scoop
+          is being pulled.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FLAVORS -->
 <section class="section flavors" id="flavors">
   <div class="container">
@@ -2352,80 +2366,6 @@ body.cursor-hover #cursor-ring {
 
 
 
-
-<!-- THE SCENE — photo gallery -->
-<section class="section gallery">
-  <div class="container">
-    <div class="gallery__head reveal">
-      <span class="eyebrow">The Scene</span>
-      <h2 class="h-serif">Snapshots from <em>Duval Street.</em></h2>
-      <p class="gallery__sub">Real photos coming — the owner's phone is stuffed with them. For now, imagine the scene.</p>
-    </div>
-
-    <div class="gallery__grid">
-      <figure class="polaroid reveal">
-        <div class="polaroid__frame">
-          <!-- Owner: replace with <img src="/photos/the-pink-door.jpg" alt="The pink door"> -->
-          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <figcaption class="polaroid__cap">The pink door</figcaption>
-      </figure>
-      <figure class="polaroid reveal">
-        <div class="polaroid__frame">
-          <!-- Owner: replace with <img src="/photos/behind-the-counter.jpg" alt="Behind the counter"> -->
-          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <figcaption class="polaroid__cap">Behind the counter</figcaption>
-      </figure>
-      <figure class="polaroid reveal">
-        <div class="polaroid__frame">
-          <!-- Owner: replace with <img src="/photos/cotton-candy-stack.jpg" alt="Cotton candy stack"> -->
-          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <figcaption class="polaroid__cap">Cotton candy stack</figcaption>
-      </figure>
-      <figure class="polaroid reveal">
-        <div class="polaroid__frame">
-          <!-- Owner: replace with <img src="/photos/todays-board.jpg" alt="Today's board"> -->
-          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <figcaption class="polaroid__cap">Today's board</figcaption>
-      </figure>
-      <figure class="polaroid reveal">
-        <div class="polaroid__frame">
-          <!-- Owner: replace with <img src="/photos/a-busy-saturday.jpg" alt="A busy Saturday"> -->
-          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <figcaption class="polaroid__cap">A busy Saturday</figcaption>
-      </figure>
-      <figure class="polaroid reveal">
-        <div class="polaroid__frame">
-          <!-- Owner: replace with <img src="/photos/the-flock.jpg" alt="The flock"> -->
-          <svg class="polaroid__ph" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <figcaption class="polaroid__cap">The flock</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
 
 <!-- IN THE SHOP -->
 <section class="section shop">
