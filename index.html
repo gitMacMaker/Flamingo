@@ -959,6 +959,12 @@ body.cursor-hover #cursor-ring {
   box-shadow: 0 0 0 4px oklch(0.88 0.16 115 / 0.4);
   animation: pulse 2s ease-in-out infinite;
 }
+.live--closed { color: oklch(0.5 0.03 260); }
+.live--closed .live-dot {
+  background: oklch(0.6 0.03 260);
+  box-shadow: 0 0 0 4px oklch(0.6 0.03 260 / 0.35);
+  animation: none;
+}
 @keyframes pulse {
   50% { box-shadow: 0 0 0 10px oklch(0.88 0.16 115 / 0); }
 }
@@ -2248,7 +2254,10 @@ body.cursor-hover #cursor-ring {
         <dl>
           <div class="info-row">
             <dt>Today</dt>
-            <dd><b>Open</b> · closes 11:00 PM <span class="live"><span class="live-dot"></span>Now scooping</span></dd>
+            <dd>
+              <b data-today="state">Open</b> · <span data-today="transition">closes 11:00 PM</span>
+              <span class="live" data-today="badge"><span class="live-dot"></span><span data-today="countdown">Now scooping</span></span>
+            </dd>
           </div>
           <div class="info-row">
             <dt>Hours</dt>
@@ -2568,6 +2577,68 @@ new MutationObserver(mutations => {
     }
   }
 }).observe(document.body, { childList: true, subtree: true });
+
+/* ============================================================
+   TODAY STATUS — live countdown until close / next open
+   Uses Key West local time (America/New_York) regardless of visitor.
+   Business hours: 11:00 – 23:00 daily.
+   ============================================================ */
+(function() {
+  const $state = document.querySelector('[data-today="state"]');
+  const $trans = document.querySelector('[data-today="transition"]');
+  const $badge = document.querySelector('[data-today="badge"]');
+  const $count = document.querySelector('[data-today="countdown"]');
+  if (!$state) return;
+
+  const OPEN_HOUR = 11;
+  const CLOSE_HOUR = 23;
+
+  function keyWestHMS() {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      hour12: false,
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    }).formatToParts(new Date());
+    return {
+      h: parseInt(parts.find(p => p.type === 'hour').value, 10),
+      m: parseInt(parts.find(p => p.type === 'minute').value, 10),
+      s: parseInt(parts.find(p => p.type === 'second').value, 10)
+    };
+  }
+
+  function fmt(total) {
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    if (h >= 1) return h + 'h ' + m + 'm';
+    if (m >= 1) return m + 'm ' + String(s).padStart(2, '0') + 's';
+    return s + 's';
+  }
+
+  function tick() {
+    const t = keyWestHMS();
+    const now = t.h * 3600 + t.m * 60 + t.s;
+    const openAt = OPEN_HOUR * 3600;
+    const closeAt = CLOSE_HOUR * 3600;
+    const isOpen = now >= openAt && now < closeAt;
+
+    if (isOpen) {
+      $state.textContent = 'Open';
+      $trans.textContent = 'closes 11:00 PM';
+      $count.textContent = 'Closes in ' + fmt(closeAt - now);
+      $badge.classList.remove('live--closed');
+    } else {
+      const untilOpen = now < openAt ? (openAt - now) : ((24 * 3600) - now + openAt);
+      $state.textContent = 'Closed';
+      $trans.textContent = 'opens 11:00 AM';
+      $count.textContent = 'Opens in ' + fmt(untilOpen);
+      $badge.classList.add('live--closed');
+    }
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
 </script>
 
 
