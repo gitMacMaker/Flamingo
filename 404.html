@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 · Wrong Turn on Duval — Flamingo Crossing</title>
+<meta name="description" content="This page took a wrong turn on Duval Street. Head back to Flamingo Crossing.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,900;1,9..144,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:      oklch(0.965 0.032 78);
+  --paper:      oklch(0.985 0.02 78);
+  --ink:        oklch(0.28  0.115 340);
+  --flamingo:   oklch(0.818 0.102 354);
+  --turquoise:  oklch(0.788 0.073 205);
+  --keylime:    oklch(0.88  0.155 115);
+  --magenta:    oklch(0.56  0.23  340);
+  --font-display: 'Bagel Fat One', system-ui, sans-serif;
+  --font-serif:   'Fraunces', Georgia, serif;
+  --font-mono:    'Space Grotesk', ui-monospace, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-serif);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(700px 500px at 10% 15%, oklch(0.9 0.13 205 / 0.55), transparent 60%),
+    radial-gradient(700px 500px at 90% 85%, oklch(0.88 0.16 45 / 0.6), transparent 60%),
+    var(--cream);
+}
+a { color: inherit; text-decoration: none; }
+.code {
+  font-family: var(--font-display);
+  font-size: clamp(140px, 24vw, 300px);
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 5px var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  transform: rotate(-2deg);
+}
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5.2vw, 64px);
+  line-height: 0.95;
+  color: var(--ink);
+  max-width: 780px;
+  margin: 0 auto 20px;
+  letter-spacing: -0.01em;
+}
+.headline em {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--magenta);
+}
+.sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(17px, 1.8vw, 22px);
+  color: var(--ink);
+  max-width: 480px;
+  margin: 0 auto 40px;
+  opacity: 0.85;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 34px;
+  background: var(--flamingo);
+  color: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 24px);
+  box-shadow: 8px 8px 0 var(--ink);
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 250ms ease;
+  z-index: 2;
+}
+.btn:hover { transform: translate(-3px, -3px); box-shadow: 12px 12px 0 var(--ink); }
+.btn svg { transition: transform 300ms ease; }
+.btn:hover svg { transform: translateX(-6px); }
+.footer {
+  position: absolute;
+  bottom: 24px;
+  left: 0; right: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.6;
+}
+.deco {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.22;
+  animation: floatY 6s ease-in-out infinite;
+}
+.deco--l { top: 12%; left: 4%; width: clamp(140px, 18vw, 220px); animation-delay: -1s; transform: rotate(-8deg); }
+.deco--r { top: 12%; right: 4%; width: clamp(140px, 18vw, 220px); transform: rotate(6deg); }
+@keyframes floatY {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-12px) rotate(2deg); }
+}
+@media (max-width: 780px) {
+  .deco { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Decorative flamingo silhouettes -->
+<svg class="deco deco--l" viewBox="0 0 400 500" aria-hidden="true">
+  <ellipse cx="220" cy="360" rx="110" ry="60" fill="var(--flamingo)" stroke="var(--ink)" stroke-width="4"/>
+  <path d="M195 320 Q120 240 140 150 Q160 60 235 60" stroke="var(--flamingo)" stroke-width="46" fill="none" stroke-linecap="round"/>
+  <path d="M195 320 Q120 240 140 150 Q160 60 235 60" stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="240" cy="70" r="34" fill="var(--flamingo)" stroke="var(--ink)" stroke-width="4"/>
+  <path d="M268 70 L320 88 L312 108 L272 90 Z" fill="var(--ink)"/>
+  <circle cx="250" cy="66" r="4" fill="var(--ink)"/>
+</svg>
+<svg class="deco deco--r" viewBox="0 0 200 300" aria-hidden="true">
+  <path d="M55 190 L100 315 L145 190 Z" fill="var(--turquoise)" stroke="var(--ink)" stroke-width="4"/>
+  <ellipse cx="100" cy="180" rx="52" ry="44" fill="var(--flamingo)" stroke="var(--ink)" stroke-width="4"/>
+  <ellipse cx="100" cy="128" rx="50" ry="42" fill="var(--turquoise)" stroke="var(--ink)" stroke-width="4"/>
+  <ellipse cx="100" cy="80" rx="46" ry="38" fill="var(--keylime)" stroke="var(--ink)" stroke-width="4"/>
+  <circle cx="100" cy="42" r="12" fill="var(--magenta)" stroke="var(--ink)" stroke-width="3"/>
+</svg>
+
+<div class="code">404</div>
+
+<h1 class="headline">You took a <em>wrong turn</em> on Duval.</h1>
+
+<p class="sub">This flavor isn't on today's board — but the pink flock is five blocks over.</p>
+
+<a class="btn" href="/">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Back to the shop
+</a>
+
+<div class="footer">1105 Duval St · Key West, FL · Since 1987</div>
+
+</body>
+</html>
