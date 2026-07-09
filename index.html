@@ -959,12 +959,21 @@ body.cursor-hover #cursor-ring {
   box-shadow: 0 0 0 4px oklch(0.88 0.16 115 / 0.4);
   animation: pulse 2s ease-in-out infinite;
 }
-.live--closed { color: oklch(0.5 0.03 260); }
-.live--closed .live-dot {
-  background: oklch(0.6 0.03 260);
-  box-shadow: 0 0 0 4px oklch(0.6 0.03 260 / 0.35);
-  animation: none;
+/* Closed state — muted italic serif, no dot. The pink pulsing dot is
+   only used for OPEN NOW; when the shop is closed we don't want a
+   fake "live" indicator. Uses .info-row .live--closed to beat the
+   more-specific .info-row .live rule above. */
+.info-row .live--closed {
+  color: var(--ink);
+  opacity: 0.7;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
+.info-row .live--closed .live-dot { display: none; }
 @keyframes pulse {
   50% { box-shadow: 0 0 0 10px oklch(0.88 0.16 115 / 0); }
 }
