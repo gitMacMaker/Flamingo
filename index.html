@@ -2184,6 +2184,17 @@ body.cursor-hover #cursor-ring {
       </div>
     </div>
 
+    <div class="scoop-picker reveal">
+      <h3 class="scoop-picker__title">Undecided?</h3>
+      <p class="scoop-picker__sub">Let the flock pick for you.</p>
+      <button class="scoop-picker__btn" type="button" data-scoop-picker>
+        Pick my scoop
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><polyline points="21 3 21 9 15 9"/></svg>
+      </button>
+      <div class="scoop-picker__result" data-scoop-result aria-live="polite"></div>
+    </div>
+
+
     <p class="call-ahead reveal is-in">
       Best way to see today's board? Come by. Or check <a href="https://www.instagram.com/flamingo_crossing/" target="_blank" rel="noopener">Instagram</a> — the day's flavors go up first thing.
     </p>
@@ -2638,6 +2649,33 @@ new MutationObserver(mutations => {
 
   tick();
   setInterval(tick, 1000);
+})();
+
+
+/* SCOOP PICKER */
+(function() {
+  const btn = document.querySelector('[data-scoop-picker]');
+  const result = document.querySelector('[data-scoop-result]');
+  if (!btn || !result) return;
+  const flavors = Array.from(document.querySelectorAll('.chip')).map(c => c.textContent.trim()).filter(Boolean);
+  if (!flavors.length) return;
+  const last = localStorage.getItem('flamingo:lastPick');
+  if (last) { result.textContent = last; result.classList.add('is-showing'); }
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('is-spinning')) return;
+    btn.classList.add('is-spinning');
+    result.style.opacity = '0.25';
+    let pick;
+    do { pick = flavors[Math.floor(Math.random() * flavors.length)]; }
+    while (pick === last && flavors.length > 1);
+    setTimeout(() => {
+      result.textContent = pick;
+      result.classList.add('is-showing');
+      result.style.opacity = '';
+      btn.classList.remove('is-spinning');
+      try { localStorage.setItem('flamingo:lastPick', pick); } catch (e) {}
+    }, 700);
+  });
 })();
 </script>
 
