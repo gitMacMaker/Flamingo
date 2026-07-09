@@ -1590,94 +1590,6 @@ body.cursor-hover #cursor-ring {
 
 
 /* ============================================================
-   SCOOP PICKER — random flavor helper
-   ============================================================ */
-.scoop-picker {
-  max-width: 500px;
-  margin: 60px auto 0;
-  padding: clamp(28px, 3.4vw, 40px);
-  text-align: center;
-  background: linear-gradient(135deg, var(--flamingo) 0%, var(--sunset) 100%);
-  border: var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lift);
-  transform: rotate(-1deg);
-}
-.scoop-picker__title {
-  font-family: var(--font-display);
-  font-size: clamp(30px, 3.6vw, 44px);
-  line-height: 0.95;
-  color: var(--ink);
-}
-.scoop-picker__sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(15px, 1.3vw, 18px);
-  color: var(--ink);
-  opacity: 0.85;
-  margin: 8px 0 22px;
-}
-.scoop-picker__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 28px;
-  background: var(--ink);
-  color: var(--cream);
-  border: var(--border);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-display);
-  font-size: clamp(17px, 1.8vw, 20px);
-  box-shadow: 5px 5px 0 var(--cream);
-  cursor: pointer;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-.scoop-picker__btn:hover:not(.is-spinning) {
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 var(--cream);
-}
-.scoop-picker__btn.is-spinning { animation: pickShake 0.4s ease-in-out infinite; cursor: wait; }
-.scoop-picker__btn svg { width: 20px; height: 20px; flex: none; }
-.scoop-picker__result {
-  min-height: 44px;
-  margin-top: 22px;
-  padding-top: 16px;
-  border-top: 2px dashed var(--ink);
-  font-family: var(--font-display);
-  font-size: clamp(22px, 3vw, 32px);
-  line-height: 1;
-  color: var(--ink);
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-.scoop-picker__result.is-showing { opacity: 1; }
-.scoop-picker__result.is-landed { animation: scoopLand 500ms cubic-bezier(0.34, 1.56, 0.64, 1); }
-@keyframes scoopLand {
-  0%   { transform: scale(0.7); }
-  60%  { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-.scoop-picker__result::before {
-  content: 'The flock says:';
-  display: block;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 14px;
-  letter-spacing: 0;
-  color: var(--ink);
-  opacity: 0.7;
-  margin-bottom: 10px;
-  text-transform: none;
-  font-weight: 400;
-}
-@keyframes pickShake {
-  0%, 100% { transform: translate(0, 0) rotate(0); }
-  25%      { transform: translate(-3px, -2px) rotate(-3deg); }
-  50%      { transform: translate(3px, 0) rotate(3deg); }
-  75%      { transform: translate(0, 2px) rotate(-1deg); }
-}
-
-/* ============================================================
    SINCE 1987 — rubber stamp in hero corner
    ============================================================ */
 .hero__since {
@@ -2302,18 +2214,6 @@ body.cursor-hover #cursor-ring {
         <span class="chip">Lavender</span>
       </div>
     </div>
-
-    <div class="scoop-picker reveal">
-      <h3 class="scoop-picker__title">Undecided?</h3>
-      <p class="scoop-picker__sub">Let the flock pick for you.</p>
-      <button class="scoop-picker__btn" type="button" data-scoop-picker>
-        Pick my scoop
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><polyline points="21 3 21 9 15 9"/></svg>
-      </button>
-      <div class="scoop-picker__result" data-scoop-result aria-live="polite"></div>
-    </div>
-
-
     <p class="call-ahead reveal is-in">
       Best way to see today's board? Come by. Or check <a href="https://www.instagram.com/flamingo_crossing/" target="_blank" rel="noopener">Instagram</a> — the day's flavors go up first thing.
     </p>
@@ -2771,68 +2671,7 @@ new MutationObserver(mutations => {
 })();
 
 
-/* SCOOP PICKER — shuffle through flavors, decelerate, land on one */
-(function() {
-  const btn = document.querySelector('[data-scoop-picker]');
-  const result = document.querySelector('[data-scoop-result]');
-  if (!btn || !result) return;
-  // Exclude "boring" / mainland-classic / alcohol flavors from the pool —
-  // the picker is meant to nudge indecisive customers toward the tropical
-  // ones. Patterns catch new additions automatically (e.g. any future
-  // vanilla or chocolate variant is filtered).
-  const skip = /vanilla|chocolate|cookies and cream|mint chip|\brum\b|amaretto|whiskey|bourbon/i;
-  const flavors = Array.from(document.querySelectorAll('.chip'))
-    .map(c => c.textContent.trim())
-    .filter(Boolean)
-    .filter(name => !skip.test(name));
-  if (flavors.length < 2) return;
 
-  const last = localStorage.getItem('flamingo:lastPick');
-  if (last) { result.textContent = last; result.classList.add('is-showing'); }
-
-  btn.addEventListener('click', () => {
-    if (btn.classList.contains('is-spinning')) return;
-    btn.classList.add('is-spinning');
-    result.classList.add('is-showing');
-    result.classList.remove('is-landed');
-
-    // Predetermine the final pick; don't repeat the last one
-    let finalPick;
-    do { finalPick = flavors[Math.floor(Math.random() * flavors.length)]; }
-    while (finalPick === result.textContent && flavors.length > 1);
-
-    const totalMs = 1900;      // total spin time
-    const startInterval = 45;  // ms between swaps at the start (fast)
-    const endInterval = 320;   // ms between swaps at the end (slow)
-    const t0 = performance.now();
-    let last_shown = '';
-
-    function step() {
-      const elapsed = performance.now() - t0;
-      if (elapsed >= totalMs) {
-        // Land
-        result.textContent = finalPick;
-        result.classList.add('is-landed');
-        btn.classList.remove('is-spinning');
-        try { localStorage.setItem('flamingo:lastPick', finalPick); } catch (e) {}
-        return;
-      }
-      // Show a random flavor (not the same twice in a row)
-      let candidate;
-      do { candidate = flavors[Math.floor(Math.random() * flavors.length)]; }
-      while (candidate === last_shown && flavors.length > 1);
-      last_shown = candidate;
-      result.textContent = candidate;
-
-      // Ease-out cubic on the interval — starts fast, ends slow
-      const p = elapsed / totalMs;
-      const ease = 1 - Math.pow(1 - p, 3);
-      const interval = startInterval + (endInterval - startInterval) * ease;
-      setTimeout(step, interval);
-    }
-    step();
-  });
-})();
 </script>
 
 
