@@ -2776,7 +2776,15 @@ new MutationObserver(mutations => {
   const btn = document.querySelector('[data-scoop-picker]');
   const result = document.querySelector('[data-scoop-result]');
   if (!btn || !result) return;
-  const flavors = Array.from(document.querySelectorAll('.chip')).map(c => c.textContent.trim()).filter(Boolean);
+  // Exclude "boring" / mainland-classic / alcohol flavors from the pool —
+  // the picker is meant to nudge indecisive customers toward the tropical
+  // ones. Patterns catch new additions automatically (e.g. any future
+  // vanilla or chocolate variant is filtered).
+  const skip = /vanilla|chocolate|cookies and cream|mint chip|\brum\b|amaretto|whiskey|bourbon/i;
+  const flavors = Array.from(document.querySelectorAll('.chip'))
+    .map(c => c.textContent.trim())
+    .filter(Boolean)
+    .filter(name => !skip.test(name));
   if (flavors.length < 2) return;
 
   const last = localStorage.getItem('flamingo:lastPick');
