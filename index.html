@@ -1665,6 +1665,73 @@ body.cursor-hover #cursor-ring {
   .hero__weather-icon { width: 18px; height: 18px; }
 }
 
+
+/* ============================================================
+   HOLIDAY THEMING — subtle date-triggered decorations
+   Christmas → snowflakes · Halloween → bats · Valentine's → hearts
+   St. Patrick's → shamrocks · Independence Day → stars
+   ============================================================ */
+.holiday-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+.holiday-decor__item {
+  position: absolute;
+  top: -40px;
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0.55;
+  will-change: transform;
+  animation: holiday-fall linear infinite;
+}
+@keyframes holiday-fall {
+  0%   { transform: translateY(-4vh) translateX(0) rotate(0deg); opacity: 0; }
+  8%   { opacity: 0.55; }
+  92%  { opacity: 0.55; }
+  100% { transform: translateY(108vh) translateX(80px) rotate(360deg); opacity: 0; }
+}
+
+/* Halloween — warmer background wash + bats that drift instead of fall */
+body.holiday-halloween {
+  background-color: oklch(0.95 0.05 55);
+}
+body.holiday-halloween .holiday-decor__item {
+  animation-name: holiday-drift;
+  opacity: 0.35;
+  color: var(--ink);
+}
+@keyframes holiday-drift {
+  0%   { transform: translate(-8vw, 20vh) rotate(-6deg); opacity: 0; }
+  10%  { opacity: 0.35; }
+  90%  { opacity: 0.35; }
+  100% { transform: translate(108vw, 30vh) rotate(6deg); opacity: 0; }
+}
+
+/* Valentine's — hearts float UP */
+body.holiday-valentines .holiday-decor__item {
+  animation-name: holiday-rise;
+  color: var(--flamingo);
+  opacity: 0.4;
+}
+@keyframes holiday-rise {
+  0%   { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-10vh) rotate(15deg); opacity: 0; }
+}
+
+/* Kill decorations entirely on reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .holiday-decor { display: none; }
+}
+/* Kill on mobile to avoid feeling cluttered */
+@media (max-width: 640px) {
+  .holiday-decor__item:nth-child(n+6) { display: none; }
+}
+
 /* ============================================================
    REVEAL
    ============================================================ */
@@ -2806,6 +2873,60 @@ new MutationObserver(mutations => {
     // On failure, silently hide the chip — no broken UI
     wrap.remove();
   }
+})();
+
+
+/* ============================================================
+   AUTO-HOLIDAY THEMING
+   Detects the current date. Add ?holiday=christmas / halloween /
+   valentines / stpatricks / independence to any URL to preview.
+   ============================================================ */
+(function() {
+  const params = new URLSearchParams(location.search);
+  const override = params.get('holiday');
+
+  function whichHoliday() {
+    if (override) return override;
+    const d = new Date();
+    const m = d.getMonth() + 1; // 1-12
+    const day = d.getDate();
+    if (m === 12) return 'christmas';
+    if (m === 10) return 'halloween';
+    if (m === 2 && day <= 14) return 'valentines';
+    if (m === 3 && day >= 15 && day <= 18) return 'stpatricks';
+    if (m === 7 && day <= 5) return 'independence';
+    return null;
+  }
+
+  const emoji = {
+    christmas:    '\u2744\uFE0F',   // ❄
+    halloween:    '\uD83E\uDD87',   // 🦇
+    valentines:   '\u2665',           // ♥
+    stpatricks:   '\u2618\uFE0F',   // ☘
+    independence: '\u2605'            // ★
+  };
+
+  const holiday = whichHoliday();
+  if (!holiday || !emoji[holiday]) return;
+
+  document.body.classList.add('holiday-' + holiday);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'holiday-decor';
+  wrap.setAttribute('aria-hidden', 'true');
+
+  const count = 18;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('span');
+    el.className = 'holiday-decor__item';
+    el.textContent = emoji[holiday];
+    el.style.left = (Math.random() * 100).toFixed(2) + '%';
+    el.style.animationDelay = (Math.random() * 12).toFixed(2) + 's';
+    el.style.animationDuration = (10 + Math.random() * 12).toFixed(2) + 's';
+    el.style.fontSize = (16 + Math.random() * 12).toFixed(0) + 'px';
+    wrap.appendChild(el);
+  }
+  document.body.appendChild(wrap);
 })();
 </script>
 
