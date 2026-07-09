@@ -266,7 +266,7 @@ body.cursor-hover #cursor-ring {
 
 .hero__wordmark {
   font-family: var(--font-display);
-  font-size: clamp(72px, 17.5vw, 268px);
+  font-size: clamp(96px, 19vw, 268px);
   line-height: 0.82;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -276,9 +276,15 @@ body.cursor-hover #cursor-ring {
 }
 .hero__wordmark .row { display: block; }
 .hero__wordmark .row.two {
-  color: transparent;
-  -webkit-text-stroke: 3px var(--ink);
+  color: var(--ink);
   font-family: var(--font-display);
+}
+/* On desktop we can afford the elegant outlined style; on phone fill it for contrast */
+@media (min-width: 900px) {
+  .hero__wordmark .row.two {
+    color: transparent;
+    -webkit-text-stroke: 3px var(--ink);
+  }
 }
 .hero__wordmark .amp {
   display: inline-block;
@@ -1037,7 +1043,7 @@ body.cursor-hover #cursor-ring {
 .review:nth-child(2) { background: oklch(0.94 0.07 205); transform: rotate(1deg); }
 .review:nth-child(3) { background: oklch(0.94 0.07 115); transform: rotate(-0.5deg); }
 .review:nth-child(4) { background: oklch(0.94 0.06 45); transform: rotate(1.5deg); }
-.review:hover { transform: rotate(0) translateY(-4px); box-shadow: var(--shadow-hover); }
+/* review cards are static */
 
 .review__stars {
   display: flex; gap: 2px; color: var(--flamingo);
@@ -1299,10 +1305,7 @@ body.cursor-hover #cursor-ring {
 .chip:nth-child(4n+1) { background: oklch(0.94 0.08 205); }
 .chip:nth-child(4n+2) { background: oklch(0.94 0.09 115); }
 .chip:nth-child(4n+3) { background: oklch(0.94 0.08 45); }
-.chip:hover {
-  transform: translate(-2px, -2px) rotate(-2deg);
-  box-shadow: 5px 5px 0 var(--ink);
-}
+/* chips are static — no hover, they aren't buttons */
 
 .call-ahead {
   text-align: center;
@@ -1783,7 +1786,7 @@ body.cursor-hover #cursor-ring {
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hero__meta">
-    <span><i class="dot"></i> Est. 2011 · Duval Street</span>
+    <span><i class="dot"></i> Est. 1987 · Duval Street</span>
     <span>24°33′N · 81°48′W</span>
     <span>Menu rotates daily <i class="dot"></i></span>
   </div>
@@ -1906,14 +1909,14 @@ body.cursor-hover #cursor-ring {
         <p>
           <span class="drop">W</span>e are a small tropical ice cream shop on the sunnier
           end of Duval, run by a flock of Key West lifers. Every batch is churned in the
-          back — no wholesale mixes, no artificial flavors, and no shortcuts on the good
+          back of the store — no wholesale mixes, no artificial flavors, and no shortcuts on the good
           stuff. If a flavor calls for guava, we peel guava.
         </p>
         <p>
-          The menu leans into what actually grows in the Keys and the Caribbean: key limes
-          hauled up from Big Pine, mamey and guava from our produce guy on White Street,
-          and whatever tropical fruit came off the boat that morning. Regulars call themselves
-          <em style="font-family:var(--font-script); font-style:normal; font-size:1.4em; color:var(--magenta);">the flock</em>. New here? Just walk in — the pink door is hard to miss.
+          The menu leans into what actually grows in the Keys and the Caribbean — key
+          limes, mamey, guava, and whatever tropical fruit came off the boat that
+          morning. Regulars call themselves
+          <em style="font-family:var(--font-script); font-style:normal; font-size:1.4em; color:var(--magenta);">the flock</em>. New here? Just walk in — the flamingo sign is hard to miss.
         </p>
       </div>
 
@@ -1984,14 +1987,11 @@ body.cursor-hover #cursor-ring {
         <span class="eyebrow">Best of the Island</span>
         <h2 class="h-serif">Seven Bubba's, <em>in a row.</em></h2>
         <p>
-          The <b>Bubba's</b> are Key West's locals'-choice awards — an annual popularity vote run
-          by the <i>Konk Life</i> weekly, where residents crown the island's best in every
-          category from breakfast to buskers.
+          The <b>Bubba's</b> are Key West's locals'-choice awards — an annual popular vote
+          where residents crown the island's best in every category from breakfast to buskers.
         </p>
         <p>
-          For seven years running, the flock has taken home <em>Best Ice Cream / Gelato.</em>
-          The ribbons live on the wall behind the counter — come read them while your scoop
-          is being pulled.
+          For seven years running, Flamingo Crossing has taken home <em>Best Ice Cream / Gelato.</em>
         </p>
       </div>
     </div>
