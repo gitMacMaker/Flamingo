@@ -89,7 +89,8 @@ html { scroll-behavior: smooth; }
 html:focus-within { scroll-behavior: smooth; }
 body {
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 18px;
   color: var(--foreground);
   background: var(--background);
   line-height: 1.5;
@@ -171,7 +172,7 @@ body.cursor-hover #cursor-ring {
 }
 .nav__brand {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 22px;
   letter-spacing: -0.01em;
   display: flex;
   align-items: center;
@@ -188,7 +189,7 @@ body.cursor-hover #cursor-ring {
   display: flex;
   gap: 26px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -207,10 +208,10 @@ body.cursor-hover #cursor-ring {
 .nav__cta {
   background: var(--ink);
   color: var(--cream);
-  padding: 10px 18px;
+  padding: 12px 20px;
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -247,7 +248,7 @@ body.cursor-hover #cursor-ring {
   max-width: 1440px;
   margin: 0 auto 40px;
   color: var(--ink);
-  opacity: 0.75;
+  opacity: 0.85;
 }
 .hero__meta span { display: inline-flex; gap: 8px; align-items: center; }
 .hero__meta .dot {
@@ -300,7 +301,7 @@ body.cursor-hover #cursor-ring {
   width: clamp(220px, 30vw, 400px);
   z-index: 1;
   animation: floatY 6s ease-in-out infinite;
-}
+ overflow: visible;}
 .hero__scoops {
   position: absolute;
   left: -2%;
@@ -318,8 +319,9 @@ body.cursor-hover #cursor-ring {
   margin-top: 40px;
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 400;
-  font-size: clamp(17px, 1.8vw, 24px);
+  font-weight: 500;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.5;
   text-align: center;
   max-width: 780px;
   margin-left: auto;
@@ -447,7 +449,7 @@ body.cursor-hover #cursor-ring {
   align-items: center;
   gap: 12px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -481,7 +483,9 @@ body.cursor-hover #cursor-ring {
 }
 .story__grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1fr;
+  max-width: 900px;
+  margin: 0 auto;
   gap: clamp(30px, 6vw, 90px);
   align-items: center;
 }
@@ -489,7 +493,8 @@ body.cursor-hover #cursor-ring {
   .story__grid { grid-template-columns: 1fr; }
 }
 .story__body p {
-  font-size: clamp(17px, 1.4vw, 20px);
+  font-size: clamp(20px, 1.5vw, 24px);
+  line-height: 1.55;
   margin-top: 20px;
   max-width: 60ch;
   color: var(--ink);
@@ -525,11 +530,11 @@ body.cursor-hover #cursor-ring {
 }
 .stat__l {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-top: 6px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .story__poster {
@@ -629,7 +634,7 @@ body.cursor-hover #cursor-ring {
 .flavors__subhead {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(16px, 1.4vw, 20px);
+  font-size: clamp(19px, 1.5vw, 22px);
   max-width: 44ch;
   color: var(--ink);
   opacity: 0.85;
@@ -717,7 +722,7 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-top: 8px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .flavor__note {
@@ -745,7 +750,7 @@ body.cursor-hover #cursor-ring {
   font-size: 10px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .flavor__note-body {
   font-family: var(--font-script);
@@ -867,7 +872,7 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.28em;
   text-transform: uppercase;
   margin-top: 8px;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -925,7 +930,7 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-top: 10px;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .info-row {
   display: grid;
@@ -938,15 +943,16 @@ body.cursor-hover #cursor-ring {
 .info-row:first-of-type { border-top: 0; padding-top: 6px; }
 .info-row dt {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 1;
 }
 .info-row dd {
   font-family: var(--font-serif);
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(18px, 1.3vw, 21px);
+  line-height: 1.5;
 }
 .info-row dd b { font-weight: 600; }
 .info-row .live {
@@ -970,7 +976,7 @@ body.cursor-hover #cursor-ring {
    more-specific .info-row .live rule above. */
 .info-row .live--closed {
   color: var(--ink);
-  opacity: 0.7;
+  opacity: 0.85;
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 15px;
@@ -1072,7 +1078,8 @@ body.cursor-hover #cursor-ring {
 .review__body {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(16px, 1.15vw, 18px);
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.5;
   line-height: 1.35;
 }
 .review__body::before { content: "“"; font-size: 1.5em; color: var(--flamingo); font-style: normal; margin-right: 2px; }
@@ -1157,12 +1164,13 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.24em;
   text-transform: uppercase;
   margin-bottom: 16px;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .footer__col ul { display: flex; flex-direction: column; gap: 10px; }
 .footer__col li a {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 18px;
   border-bottom: 1.5px solid transparent;
   transition: border-color 200ms ease;
 }
@@ -1193,11 +1201,11 @@ body.cursor-hover #cursor-ring {
   gap: 12px;
   flex-wrap: wrap;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  opacity: 0.75;
+  opacity: 0.85;
   padding-top: 24px;
   border-top: var(--border);
 }
@@ -1257,7 +1265,7 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink);
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .deck-caption__tag {
   display: inline-block;
@@ -1274,7 +1282,7 @@ body.cursor-hover #cursor-ring {
   font-size: 14px;
   letter-spacing: 0;
   text-transform: none;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 /* ============================================================
@@ -1311,13 +1319,13 @@ body.cursor-hover #cursor-ring {
   margin: 0 auto;
 }
 .chip {
-  padding: 9px 18px;
+  padding: 14px 24px;
   background: var(--paper);
   border: var(--border);
   border-radius: var(--radius-pill);
   font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 18px;
   box-shadow: 3px 3px 0 var(--ink);
   transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease;
 }
@@ -1332,10 +1340,12 @@ body.cursor-hover #cursor-ring {
   margin-top: 60px;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(17px, 1.4vw, 20px);
+  font-size: clamp(19px, 1.4vw, 20px);
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 500;
+  line-height: 1.5;
 }
 .call-ahead a {
   font-family: var(--font-mono);
@@ -1391,7 +1401,7 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink);
-  opacity: 0.75;
+  opacity: 0.85;
 }
 .shop-card__title {
   font-family: var(--font-display);
@@ -1431,7 +1441,7 @@ body.cursor-hover #cursor-ring {
   font-style: italic;
   font-size: 15px;
   color: var(--ink);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .shop-card__socials {
   display: flex;
@@ -1572,13 +1582,15 @@ body.cursor-hover #cursor-ring {
   justify-self: center;
   animation: floatY 5s ease-in-out infinite;
 }
-.awards__badge svg { display: block; width: 100%; height: 100%; }
+.awards__badge svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .awards__body { max-width: 52ch; }
 .awards__body .eyebrow { color: var(--magenta); }
 .awards__body h2 { margin-bottom: 20px; }
 .awards__body p {
   font-family: var(--font-serif);
-  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 500;
+  font-size: clamp(19px, 1.5vw, 23px);
+  line-height: 1.55;
   line-height: 1.5;
   color: var(--ink);
   margin-top: 16px;
@@ -1618,12 +1630,12 @@ body.cursor-hover #cursor-ring {
   align-items: center;
   gap: 10px;
   margin: 24px auto 0;
-  padding: 10px 20px;
+  padding: 12px 22px;
   background: var(--cream);
   border: var(--border);
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1650,12 +1662,13 @@ body.cursor-hover #cursor-ring {
 .hero__weather-cond {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
   color: var(--ink);
-  opacity: 0.75;
+  opacity: 0.85;
   margin-left: 4px;
 }
 @media (max-width: 640px) {
@@ -1663,6 +1676,350 @@ body.cursor-hover #cursor-ring {
   .hero__weather-temp { font-size: 18px; }
   .hero__weather-cond { font-size: 12px; }
   .hero__weather-icon { width: 18px; height: 18px; }
+}
+
+
+
+/* ============================================================
+   HOLIDAY REVAMP — full seasonal takeover
+   Auto-detected based on date, or ?holiday=[name] URL override.
+   Supports: christmas · halloween · independence · starwars
+   ============================================================ */
+
+/* Sticky top banner shared by every holiday */
+.holiday-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 60;
+  padding: 12px 24px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  border-bottom: var(--border);
+  animation: bannerSlide 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes bannerSlide {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+body.holiday-active { padding-top: 46px; }
+body.holiday-active .nav { top: 60px; }
+@media (max-width: 640px) {
+  .holiday-banner { font-size: 12px; padding: 9px 14px; }
+  body.holiday-active { padding-top: 40px; }
+  body.holiday-active .nav { top: 54px; }
+}
+
+/* Floating decorations */
+.holiday-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+.holiday-decor__item {
+  position: absolute;
+  top: -40px;
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0.55;
+  will-change: transform;
+  animation: holiday-fall linear infinite;
+}
+@keyframes holiday-fall {
+  0%   { transform: translateY(-4vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.55; }
+  90%  { opacity: 0.55; }
+  100% { transform: translateY(108vh) rotate(360deg); opacity: 0; }
+}
+@keyframes holiday-drift {
+  0%   { transform: translate(-8vw, 20vh) rotate(-6deg); opacity: 0; }
+  10%  { opacity: 0.35; }
+  90%  { opacity: 0.35; }
+  100% { transform: translate(108vw, 30vh) rotate(6deg); opacity: 0; }
+}
+@keyframes holiday-twinkle {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 0.85; }
+}
+
+/* Holiday chip base */
+.chip--holiday {
+  position: relative;
+  border-color: #3A1140 !important;
+  box-shadow: 4px 4px 0 #3A1140 !important;
+}
+.chip--holiday::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: -8px; right: -8px;
+  padding: 2px 7px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 2px solid #3A1140;
+}
+
+/* Christmas — Candy Cane chip: white body, red script, green tag */
+body.holiday-christmas .chip--holiday {
+  background: #fff !important;
+  color: #c9384a !important;
+  border-color: #c9384a !important;
+  box-shadow: 4px 4px 0 #2f8a4d !important;
+  font-weight: 800;
+}
+body.holiday-christmas .chip--holiday::after {
+  background: #2f8a4d;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Halloween — Pumpkin Spice chip: bright orange body, deep purple tag */
+body.holiday-halloween .chip--holiday {
+  background: #f18a2a !important;
+  color: #2a1440 !important;
+  border-color: #2a1440 !important;
+  box-shadow: 4px 4px 0 #2a1440 !important;
+  font-weight: 800;
+}
+body.holiday-halloween .chip--holiday::after {
+  background: #2a1440;
+  color: #f18a2a;
+  border-color: #f18a2a;
+}
+
+/* Independence Day — red-white-blue chip */
+body.holiday-independence .chip--holiday {
+  background: linear-gradient(90deg, #b13a3a 0%, #fff 50%, #2a4884 100%) !important;
+  color: #3A1140 !important;
+  border-color: #3A1140 !important;
+  box-shadow: 4px 4px 0 #3A1140 !important;
+  font-weight: 800;
+}
+body.holiday-independence .chip--holiday::after {
+  background: #b13a3a;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Star Wars — lightsaber green with glow */
+body.holiday-starwars .chip--holiday {
+  background: #0d0d0d !important;
+  color: oklch(0.85 0.2 145) !important;
+  border-color: oklch(0.85 0.2 145) !important;
+  box-shadow: 4px 4px 0 oklch(0.85 0.2 145), 0 0 12px oklch(0.85 0.2 145 / 0.6) !important;
+  font-weight: 700;
+}
+body.holiday-starwars .chip--holiday::after {
+  background: oklch(0.85 0.2 145);
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+}
+
+/* Mascot accessory positioning */
+.mascot-hat {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* -------------------- CHRISTMAS -------------------- */
+body.holiday-christmas {
+  --flamingo:  oklch(0.6  0.16 25);   /* holiday red */
+  --sunset:    oklch(0.68 0.14 55);
+  --keylime:   oklch(0.82 0.15 95);   /* gold */
+  --turquoise: oklch(0.55 0.13 145);  /* fir green */
+  --magenta:   oklch(0.5  0.18 15);
+  --ink:       oklch(0.33 0.14 22);   /* deep berry red — festive text, still dark & readable */
+  --background: oklch(0.965 0.02 220);
+}
+body.holiday-christmas .holiday-banner {
+  background: linear-gradient(90deg, #c9384a 0%, #f5c94a 50%, #2f8a4d 100%);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+body.holiday-christmas .nav::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  height: 24px;
+  background:
+    /* alternating red + green bulbs on a thin wire */
+    linear-gradient(#3A1140, #3A1140) 0 3px/100% 2px no-repeat,
+    radial-gradient(circle at 12px 12px, #c9384a 6px, transparent 7px) 0 0/48px 24px repeat-x,
+    radial-gradient(circle at 36px 12px, #2f8a4d 6px, transparent 7px) 0 0/48px 24px repeat-x;
+  pointer-events: none;
+}
+body.holiday-christmas .nav::after {
+  filter: drop-shadow(0 2px 3px rgba(201,56,74,0.4));
+}
+body.holiday-christmas .section {
+  position: relative;
+}
+body.holiday-christmas .section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 14px;
+  background: radial-gradient(ellipse at center bottom, #ffffff 55%, transparent 60%);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* -------------------- HALLOWEEN -------------------- */
+body.holiday-halloween {
+  --flamingo:  oklch(0.72 0.18 45);   /* burnt orange */
+  --sunset:    oklch(0.78 0.17 55);
+  --keylime:   oklch(0.75 0.16 105);  /* acid green */
+  --turquoise: oklch(0.45 0.15 305);  /* haunted purple */
+  --magenta:   oklch(0.45 0.2 305);
+  --ink:       oklch(0.29 0.13 305);  /* deep witchy purple — festive text, still dark & readable */
+  --background: oklch(0.94 0.05 55);  /* sepia */
+}
+body.holiday-halloween .holiday-decor__item { animation-name: holiday-drift; opacity: 0.4; color: var(--ink); }
+body.holiday-halloween .holiday-banner {
+  background: linear-gradient(90deg, #4a1275 0%, #f18a2a 100%);
+  color: #fff2e2;
+}
+body.holiday-halloween .hero::after {
+  content: '';
+  position: absolute;
+  top: 60px; right: 12px;
+  width: 120px; height: 120px;
+  background:
+    repeating-radial-gradient(circle, transparent 0 12px, rgba(58,17,64,0.4) 12px 13px),
+    repeating-conic-gradient(from 0deg, rgba(58,17,64,0.4) 0deg 0.5deg, transparent 0.5deg 45deg);
+  -webkit-mask: radial-gradient(circle at top right, black 0 60%, transparent 65%);
+          mask: radial-gradient(circle at top right, black 0 60%, transparent 65%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* -------------------- INDEPENDENCE DAY -------------------- */
+body.holiday-independence {
+  --flamingo:  oklch(0.55 0.2 25);   /* patriot red */
+  --sunset:    oklch(0.62 0.18 30);
+  --keylime:   oklch(0.98 0.005 240);/* white-cream */
+  --turquoise: oklch(0.4  0.16 250); /* navy blue */
+  --magenta:   oklch(0.5  0.2 20);
+  --ink:       oklch(0.28 0.11 258); /* deep navy — festive text, still dark & readable */
+  --background: oklch(0.98 0.01 240);
+}
+body.holiday-independence .holiday-banner {
+  background: linear-gradient(90deg, #b13a3a 0% 33%, #ffffff 33% 66%, #2a4884 66% 100%);
+  color: var(--ink);
+  font-weight: 700;
+}
+body.holiday-independence .nav {
+  background: linear-gradient(90deg, #b13a3a 0%, #ffffff 50%, #2a4884 100%);
+}
+
+/* -------------------- ST. PATRICK'S DAY -------------------- */
+body.holiday-stpatricks {
+  --flamingo:  oklch(0.55 0.15 150);  /* shamrock green */
+  --sunset:    oklch(0.8  0.14 90);   /* gold */
+  --keylime:   oklch(0.85 0.15 130);  /* light clover */
+  --turquoise: oklch(0.45 0.12 155);  /* deep pine */
+  --magenta:   oklch(0.62 0.13 85);   /* antique gold */
+  --ink:       oklch(0.3  0.09 155);  /* deep forest — festive text, still dark & readable */
+  --background: oklch(0.97 0.02 140); /* pale mint */
+}
+body.holiday-stpatricks .holiday-banner {
+  background: linear-gradient(90deg, #1c5631 0%, #2f8a4d 55%, #f5c94a 100%);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+/* Soft green + gold wash on the hero */
+body.holiday-stpatricks .hero {
+  background:
+    radial-gradient(1100px 520px at 12% 20%, oklch(0.88 0.09 150 / 0.55), transparent 60%),
+    radial-gradient(900px 500px at 88% 80%, oklch(0.9 0.1 95 / 0.5), transparent 60%),
+    var(--cream);
+}
+
+
+/* -------------------- STAR WARS DAY (May 4th) — light body, dark galactic hero -------------------- */
+/* Body stays light with a deep-navy ink so all text is crisp & readable; only the
+   hero goes full dark/space with light text for the dramatic galactic moment. */
+body.holiday-starwars {
+  --flamingo:  oklch(0.62 0.19 148);  /* lightsaber green — primary accent */
+  --sunset:    oklch(0.72 0.15 150);
+  --keylime:   oklch(0.82 0.16 118);
+  --turquoise: oklch(0.5  0.14 235);  /* hologram blue */
+  --magenta:   oklch(0.45 0.12 265);  /* imperial blue — NOT red, or rosette ribbons read as Christmas */
+  --ink:       oklch(0.24 0.06 265);  /* deep space navy — readable body text on cream */
+  --background: oklch(0.96 0.012 262);
+}
+body.holiday-starwars .holiday-banner {
+  background: linear-gradient(90deg, #0d1b3d 0%, oklch(0.4 0.15 145) 100%);
+  color: #fff;
+  border-color: var(--ink);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px oklch(0.75 0.18 145);
+}
+/* Full dark starfield JUST on the hero — light hero text (below) reads against it */
+body.holiday-starwars .hero {
+  background:
+    radial-gradient(1.5px 1.5px at 12% 22%, #ffffff, transparent),
+    radial-gradient(1.5px 1.5px at 28% 68%, #cfe6ff, transparent),
+    radial-gradient(2px 2px at 47% 34%, #ffffff, transparent),
+    radial-gradient(1.5px 1.5px at 63% 74%, #e6f0ff, transparent),
+    radial-gradient(2px 2px at 78% 28%, #ffffff, transparent),
+    radial-gradient(1.5px 1.5px at 88% 60%, #bfe0ff, transparent),
+    radial-gradient(1200px 620px at 18% 22%, oklch(0.42 0.17 268 / 0.55), transparent 62%),
+    radial-gradient(1000px 560px at 84% 82%, oklch(0.5 0.16 150 / 0.4), transparent 60%),
+    linear-gradient(180deg, #070a16 0%, #0a0f22 100%);
+}
+/* Vader-dark the hero flamingo silhouette by tinting */
+body.holiday-starwars .hero__flamingo path[stroke*="oklch(0.818"],
+body.holiday-starwars .hero__flamingo path[fill*="oklch(0.818"],
+body.holiday-starwars .hero__flamingo ellipse[fill*="oklch(0.818"],
+body.holiday-starwars .hero__flamingo circle[fill*="oklch(0.818"] {
+  fill: #1a1a1a !important;
+  stroke: #1a1a1a !important;
+}
+body.holiday-starwars .hero__flamingo path[fill*="oklch(0.7 0.14 354)"] {
+  fill: #0d0d0d !important;
+}
+
+
+/* Text color is now driven by each holiday's dark, holiday-tinted --ink, so body
+   copy stays crisp and readable while picking up the festive hue. Only two spots
+   need explicit overrides: */
+
+/* 1. Follow-the-Flock card sits on a mid-dark accent (fir green / purple / navy /
+   saber green) in every holiday — keep its text light for contrast. */
+body.holiday-active .shop-card--follow .shop-card__body,
+body.holiday-active .shop-card--follow .shop-card__title,
+body.holiday-active .shop-card--follow .shop-card__label {
+  color: #FFF4E4 !important;
+}
+/* Same for the third stat card (4.5 star rating), also on the turquoise accent */
+body.holiday-active .stat:nth-child(3) .stat__n,
+body.holiday-active .stat:nth-child(3) .stat__l {
+  color: #FFF4E4 !important;
+}
+
+/* 2. Star Wars hero alone goes full dark/galactic — lift its text to light so it
+   reads against the starfield. The rest of the page stays light + navy ink. */
+body.holiday-starwars .hero__wordmark,
+body.holiday-starwars .hero__wordmark .row,
+body.holiday-starwars .hero__wordmark .row.two,
+body.holiday-starwars .hero__tagline,
+body.holiday-starwars .hero__tagline em,
+body.holiday-starwars .hero__meta,
+body.holiday-starwars .hero__meta span,
+body.holiday-starwars .hero__label {
+  color: #EAF7EE !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: 0 0 12px rgba(70, 230, 140, 0.45), 0 2px 4px rgba(0, 0, 0, 0.55);
 }
 
 /* ============================================================
@@ -2048,35 +2405,10 @@ body.cursor-hover #cursor-ring {
         </div>
         <div class="stat">
           <div class="stat__n">4.5<span style="font-size:0.55em; color:var(--flamingo)">★</span></div>
-          <div class="stat__l">Flock rating</div>
+          <div class="stat__l">Star rating</div>
         </div>
       </div>
-    </div>
-
-    <div class="reveal is-in">
-      <div class="story__poster">
-        <div class="poster__top">
-          <span>Est. 1987</span>
-          <span>Key West · FL</span>
-        </div>
-        <div class="poster__title">
-          <span>Cool</span>
-          <span class="script">tropical</span>
-          <span>Trouble</span>
-        </div>
-        <div class="poster__bottom">1105 Duval · Open till 11 · Rotating Menu</div>
-        <svg class="poster__palm" viewBox="0 0 200 200" aria-hidden="true">
-          <path d="M100 190 L100 90" stroke="#3A1140" stroke-width="6"></path>
-          <path d="M100 90 Q40 60 20 80 Q45 65 100 90" fill="#3A1140"></path>
-          <path d="M100 90 Q160 60 180 80 Q155 65 100 90" fill="#3A1140"></path>
-          <path d="M100 90 Q60 20 40 20 Q70 30 100 90" fill="#3A1140"></path>
-          <path d="M100 90 Q140 20 160 20 Q130 30 100 90" fill="#3A1140"></path>
-          <path d="M100 90 Q90 30 70 10 Q100 40 100 90" fill="#3A1140"></path>
-          <path d="M100 90 Q110 30 130 10 Q100 40 100 90" fill="#3A1140"></path>
-        </svg>
-      </div>
-    </div>
-  </div>
+    </div></div>
 </section>
 
 
@@ -2410,7 +2742,7 @@ body.cursor-hover #cursor-ring {
 <section class="section reviews">
   <div class="container">
     <div class="reveal" style="max-width: 820px;">
-      <span class="eyebrow">From the Flock</span>
+      <span class="eyebrow">Kind Words</span>
       <h2 class="h-serif">Ninety-something percent of them <em>came back for a second scoop.</em></h2>
     </div>
 
@@ -2493,7 +2825,7 @@ body.cursor-hover #cursor-ring {
   <div class="container">
     <div class="shop__head reveal">
       <span class="eyebrow">In the Shop</span>
-      <h2 class="h-serif">Come by. <em>Take some flock home.</em></h2>
+      <h2 class="h-serif">Come by. <em>Take a little Key West home.</em></h2>
     </div>
 
     <div class="shop__grid">
@@ -2501,7 +2833,7 @@ body.cursor-hover #cursor-ring {
         <div class="shop-card__label">Only in the Shop · No Online Orders</div>
         <h3 class="shop-card__title">T-shirts &amp; gift cards.</h3>
         <p class="shop-card__body">
-          Grab a shirt for the flock member in your life, or a gift card so somebody else can pick their own flavor. Both live only at the counter — no online store.
+          Grab a shirt for the ice-cream lover in your life, or a gift card so somebody else can pick their own flavor. Both live only at the counter — no online store.
         </p>
         <div class="shop-card__items">
           <span class="item">Tees</span>
@@ -2514,7 +2846,7 @@ body.cursor-hover #cursor-ring {
         <div class="shop-card__label">The Daily Board · Instagram &amp; Facebook</div>
         <h3 class="shop-card__title">Follow the flock.</h3>
         <p class="shop-card__body">
-          The day's board goes up on social before we roll up the shutters. Follow along for what's spinning this morning, this month's seasonal, and the occasional flock member on parade.
+          The day's board goes up on social before we roll up the shutters. Follow along for what's spinning this morning, this month's seasonal, and the occasional flamingo on parade.
         </p>
         <div class="shop-card__socials">
           <a href="https://www.instagram.com/flamingo_crossing/" target="_blank" rel="noopener">
@@ -2537,7 +2869,7 @@ body.cursor-hover #cursor-ring {
   <div class="container">
     <div class="feed__head reveal">
       <span class="eyebrow">Fresh Off the Feed</span>
-      <h2 class="h-serif">Straight from <em>the flock's Facebook.</em></h2>
+      <h2 class="h-serif">Straight from <em>our Facebook.</em></h2>
       <p class="feed__sub">
         Holiday specials, shop happenings, and the occasional flock member on parade — live from the Facebook page. Instagram lives <a href="https://www.instagram.com/flamingo_crossing/" target="_blank" rel="noopener">over here</a>.
       </p>
@@ -2805,6 +3137,215 @@ new MutationObserver(mutations => {
   } catch (e) {
     // On failure, silently hide the chip — no broken UI
     wrap.remove();
+  }
+})();
+
+
+
+
+
+/* ============================================================
+   AUTO-HOLIDAY THEMING — full seasonal takeover
+   Full-site revamp per holiday: palette, decor, banner, mascot
+   accessories, hero copy, section copy, footer, and holiday-only
+   flavor chips. Auto-detects date or ?holiday=NAME override.
+   ============================================================ */
+(function() {
+  const params = new URLSearchParams(location.search);
+  const override = params.get('holiday');
+
+  function whichHoliday() {
+    if (override) return override;
+    const d = new Date();
+    const m = d.getMonth() + 1;
+    const day = d.getDate();
+    if (m === 12) return 'christmas';           // all of December
+    if (m === 10) return 'halloween';           // all of October
+    if (m === 7 && day <= 5) return 'independence'; // July 1-5
+    if (m === 5 && day === 4) return 'starwars';    // May 4th only
+    if (m === 3 && day >= 15 && day <= 17) return 'stpatricks'; // through St. Patrick's Day
+    return null;
+  }
+
+  const profiles = {
+    /* ------------------- CHRISTMAS ------------------- */
+    christmas: {
+      symbol: null,
+      banner: '🎄 Happy Holidays from Flamingo Crossing',
+      hero: {
+        tagline: 'We\'ve <em>decked the halls.</em> Come by for a scoop.',
+        ctaText: 'See the Holiday Board'
+      },
+      sections: {
+        '#flock .h-serif': 'A <em>winter flock</em> on Duval Street.',
+        '#flavors .h-serif': 'The <em>holiday board</em> changes daily.'
+      },
+      chips: [ { name: 'Candy Cane', tag: 'HOLIDAY' } ],
+      footerHail: '<em>Happy Holidays.</em> Open through the season, seven days a week — walk down Duval and you can\'t miss us.',
+      hatSVG: '<g transform="translate(238 22) rotate(-18)"><path d="M-25 22 Q-8 -28 32 -12 L30 20 L-25 20 Z" fill="#c9384a" stroke="#3A1140" stroke-width="3" stroke-linejoin="round"/><ellipse cx="0" cy="22" rx="30" ry="6" fill="#fff" stroke="#3A1140" stroke-width="3"/><circle cx="32" cy="-12" r="10" fill="#fff" stroke="#3A1140" stroke-width="3"/></g>',
+      rosetteHat: '<g transform="translate(120 30) rotate(-12) scale(1.2)"><path d="M-32 22 Q-10 -32 34 -10 L32 20 L-32 20 Z" fill="#c9384a" stroke="#3A1140" stroke-width="3" stroke-linejoin="round"/><ellipse cx="0" cy="22" rx="38" ry="7" fill="#fff" stroke="#3A1140" stroke-width="3"/><circle cx="34" cy="-10" r="12" fill="#fff" stroke="#3A1140" stroke-width="3"/></g>',
+      deckCard: '<article class="flavor deck-card" style="--card-bg: oklch(0.92 0.05 15); --card-ink: #3A1140;" data-pos="6"><div class="flavor__top"><span class="flavor__badges"><span class="badge badge--holiday">HOLIDAY</span></span></div><svg class="flavor__scoop" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="100" rx="82" ry="70" fill="#fff" stroke="#3A1140" stroke-width="4"/><path d="M32 100 Q46 84 62 96 Q75 78 90 92 Q104 74 120 92 Q136 78 152 94 Q166 84 168 100" fill="none" stroke="#c9384a" stroke-width="6" opacity="0.85"/><path d="M45 135 Q60 120 76 132 Q90 116 106 130 Q120 116 136 130 Q150 118 156 130" fill="none" stroke="#c9384a" stroke-width="5" opacity="0.75"/><ellipse cx="75" cy="80" rx="12" ry="8" fill="rgba(255,255,255,0.7)"/><circle cx="140" cy="112" r="4" fill="#c9384a"/><circle cx="60" cy="118" r="3" fill="#c9384a"/><circle cx="110" cy="140" r="4" fill="#c9384a"/></svg><div><h3 class="flavor__name">Candy Cane</h3><div class="flavor__type">Holiday · Peppermint</div></div><div class="flavor__note"><div class="flavor__note-header">Tasting Note</div><p class="flavor__note-body">Cool peppermint cream. On the board through the holidays.</p><div class="flavor__note-footer"><span>Holiday</span><span>Made in shop</span></div></div></article>'
+    },
+
+    /* ------------------- HALLOWEEN ------------------- */
+    halloween: {
+      symbol: null,
+      banner: '🎃 Trick or treat on Duval Street',
+      hero: {
+        tagline: 'Things have <em>gone spooky.</em> Come by for a scoop.',
+        ctaText: 'See the Spooky Board'
+      },
+      sections: {
+        '#flock .h-serif': 'A <em>haunted flock</em> on Duval Street.',
+        '#flavors .h-serif': 'The <em>spooky board</em> changes daily.'
+      },
+      chips: [ { name: 'Pumpkin Spice', tag: 'HOLIDAY' } ],
+      footerHail: '<em>Happy Halloween.</em> Open till eleven, seven days — walk down Duval and you can\'t miss us.',
+      hatSVG: '<g transform="translate(240 8) rotate(-10)"><path d="M-4 -40 L-30 26 L22 26 Z" fill="#2a1440" stroke="#3A1140" stroke-width="3" stroke-linejoin="round"/><ellipse cx="-4" cy="30" rx="36" ry="7" fill="#2a1440" stroke="#3A1140" stroke-width="3"/><rect x="-16" y="12" width="18" height="5" fill="#f18a2a"/></g>',
+      rosetteHat: '<g transform="translate(120 22) rotate(-8) scale(1.15)"><path d="M-4 -50 L-32 26 L24 26 Z" fill="#2a1440" stroke="#3A1140" stroke-width="3" stroke-linejoin="round"/><ellipse cx="-4" cy="30" rx="42" ry="8" fill="#2a1440" stroke="#3A1140" stroke-width="3"/><rect x="-16" y="10" width="18" height="5" fill="#f18a2a"/></g>',
+      deckCard: '<article class="flavor deck-card" style="--card-bg: oklch(0.75 0.14 55); --card-ink: #3A1140;" data-pos="6"><div class="flavor__top"><span class="flavor__badges"><span class="badge badge--holiday">HOLIDAY</span></span></div><svg class="flavor__scoop" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="100" rx="82" ry="70" fill="oklch(0.75 0.14 55)" stroke="#3A1140" stroke-width="4"/><path d="M32 100 Q48 82 66 96 Q78 78 94 92 Q108 74 124 92 Q140 78 154 94 Q168 82 168 100" fill="none" stroke="#3A1140" stroke-width="3" opacity="0.9"/><path d="M50 130 Q64 118 78 128 Q92 116 106 128 Q120 118 134 128 Q148 118 154 128" fill="none" stroke="#7a2b00" stroke-width="3" opacity="0.7"/><ellipse cx="75" cy="80" rx="12" ry="8" fill="rgba(255,255,255,0.55)"/><circle cx="140" cy="112" r="3" fill="#5a2b00" opacity="0.8"/><circle cx="60" cy="118" r="2" fill="#5a2b00" opacity="0.7"/><circle cx="110" cy="140" r="3" fill="#5a2b00" opacity="0.8"/><circle cx="85" cy="125" r="2" fill="#5a2b00" opacity="0.7"/><circle cx="130" cy="90" r="2" fill="#5a2b00" opacity="0.7"/></svg><div><h3 class="flavor__name">Pumpkin Spice</h3><div class="flavor__type">Holiday · October</div></div><div class="flavor__note"><div class="flavor__note-header">Tasting Note</div><p class="flavor__note-body">Pumpkin and warm spice. On the board through October.</p><div class="flavor__note-footer"><span>Holiday</span><span>Made in shop</span></div></div></article>'
+    },
+
+    /* ------------------- INDEPENDENCE DAY ------------------- */
+    independence: {
+      symbol: null,
+      banner: '🎇 Happy Fourth, Key West',
+      hero: {
+        tagline: '<em>Star-spangled scoops</em> through the Fourth. Come by.',
+        ctaText: 'See the Board'
+      },
+      sections: {
+        '#flock .h-serif': 'A <em>star-spangled flock</em> on Duval Street.',
+        '#flavors .h-serif': 'The <em>Fourth of July board</em> changes daily.'
+      },
+      chips: [],
+      footerHail: '<em>Star-spangled scoops.</em> Open through the Fourth till eleven — walk down Duval and you can\'t miss us.',
+      hatSVG: '<g transform="translate(240 15) rotate(-4)"><path d="M-26 34 L28 34 L30 42 L-28 42 Z" fill="#b13a3a" stroke="#3A1140" stroke-width="3"/><rect x="-26" y="30" width="56" height="6" fill="#fff" stroke="#3A1140" stroke-width="2"/><rect x="-16" y="-14" width="34" height="46" fill="#2a4884" stroke="#3A1140" stroke-width="3"/><circle cx="1" cy="8" r="3" fill="#fff"/><circle cx="-9" cy="0" r="3" fill="#fff"/><circle cx="11" cy="0" r="3" fill="#fff"/></g>',
+      rosetteHat: '<g transform="translate(120 26)"><rect x="-28" y="28" width="60" height="8" fill="#b13a3a" stroke="#3A1140" stroke-width="3"/><rect x="-28" y="24" width="60" height="6" fill="#fff" stroke="#3A1140" stroke-width="2"/><rect x="-20" y="-24" width="40" height="50" fill="#2a4884" stroke="#3A1140" stroke-width="3"/><circle cx="0" cy="6" r="3" fill="#fff"/><circle cx="-10" cy="-2" r="3" fill="#fff"/><circle cx="10" cy="-2" r="3" fill="#fff"/></g>'
+    },
+
+    /* ------------------- MAY THE 4TH — DARTH VADER FLAMINGO ------------------- */
+    starwars: {
+      symbol: null,
+      banner: 'May the 4th be with you',
+      hero: {
+        tagline: 'We\'ve <em>gone galactic.</em> Come by for a scoop — May the 4th only.',
+        ctaText: 'See the Board'
+      },
+      sections: {
+        '#flock .h-serif': 'A <em>galactic flock</em> on Duval Street.',
+        '#flavors .h-serif': 'The <em>galactic board</em> changes daily.'
+      },
+      chips: [],
+      footerHail: '<em>May the 4th be with you.</em> Open till eleven, seven days a week — walk down Duval and you can\'t miss us.',
+      hatSVG: '<g transform="translate(240 60)"><path d="M-70 -140 Q-90 60 -20 100 L50 100 Q60 60 30 -140 Z" fill="#0d0d0d" stroke="#3A1140" stroke-width="3" opacity="0.9"/><path d="M-32 -10 Q-30 -50 0 -55 Q30 -50 30 -10 Q30 20 20 30 L-20 30 Q-30 20 -32 -10 Z" fill="#0d0d0d" stroke="#3A1140" stroke-width="3"/><path d="M-24 -8 Q-22 15 -12 28 L12 28 Q22 15 24 -8 Z" fill="#1a1a1a" stroke="#3A1140" stroke-width="2"/><path d="M-18 -2 L-6 -2 L-10 8 Z" fill="#e83030"/><path d="M18 -2 L6 -2 L10 8 Z" fill="#e83030"/><rect x="-8" y="12" width="16" height="10" fill="#0d0d0d" stroke="#3A1140" stroke-width="1.5"/><line x1="-6" y1="16" x2="6" y2="16" stroke="#3A1140" stroke-width="1"/><line x1="-6" y1="19" x2="6" y2="19" stroke="#3A1140" stroke-width="1"/></g>',
+      rosetteHat: '<g transform="translate(120 40) scale(1.15)"><path d="M-32 -18 Q-30 -60 0 -64 Q30 -60 30 -18 Q30 14 20 26 L-20 26 Q-30 14 -32 -18 Z" fill="#0d0d0d" stroke="#3A1140" stroke-width="3"/><path d="M-24 -14 Q-22 12 -12 26 L12 26 Q22 12 24 -14 Z" fill="#1a1a1a" stroke="#3A1140" stroke-width="2"/><path d="M-18 -8 L-4 -8 L-9 4 Z" fill="#e83030"/><path d="M18 -8 L4 -8 L9 4 Z" fill="#e83030"/><rect x="-7" y="10" width="14" height="10" fill="#0d0d0d" stroke="#3A1140" stroke-width="1"/></g>'
+    },
+
+    /* ------------------- ST. PATRICK'S DAY ------------------- */
+    stpatricks: {
+      symbol: null,
+      banner: '☘️ Happy St. Patrick’s Day from Duval Street',
+      hero: {
+        tagline: 'The mint chip is <em>feeling lucky.</em> Come by for a scoop.',
+        ctaText: 'See the Board'
+      },
+      sections: {
+        '#flock .h-serif': 'A <em>lucky flock</em> on Duval Street.',
+        '#flavors .h-serif': 'The <em>lucky board</em> changes daily.'
+      },
+      chips: [],
+      footerHail: '<em>Happy St. Patrick’s Day.</em> Open till eleven, seven days — walk down Duval and you can\'t miss us.',
+      hatSVG: '<g transform="translate(240 14) rotate(-8)"><ellipse cx="0" cy="26" rx="38" ry="7" fill="#2f8a4d" stroke="#3A1140" stroke-width="3"/><rect x="-24" y="-22" width="48" height="48" rx="4" fill="#2f8a4d" stroke="#3A1140" stroke-width="3"/><rect x="-24" y="8" width="48" height="13" fill="#1c5631" stroke="#3A1140" stroke-width="2"/><rect x="-9" y="6" width="18" height="17" rx="2" fill="none" stroke="#f5c94a" stroke-width="4"/></g>',
+      rosetteHat: '<g transform="translate(120 22) scale(1.1)"><ellipse cx="0" cy="28" rx="44" ry="8" fill="#2f8a4d" stroke="#3A1140" stroke-width="3"/><rect x="-27" y="-26" width="54" height="54" rx="4" fill="#2f8a4d" stroke="#3A1140" stroke-width="3"/><rect x="-27" y="9" width="54" height="14" fill="#1c5631" stroke="#3A1140" stroke-width="2"/><rect x="-10" y="7" width="20" height="18" rx="2" fill="none" stroke="#f5c94a" stroke-width="4"/></g>'
+    }
+  };
+
+  const holiday = whichHoliday();
+  if (!holiday || !profiles[holiday]) return;
+  const p = profiles[holiday];
+
+  document.body.classList.add('holiday-' + holiday, 'holiday-active');
+
+  // Banner
+  const banner = document.createElement('div');
+  banner.className = 'holiday-banner';
+  banner.setAttribute('role', 'status');
+  banner.textContent = p.banner;
+  document.body.appendChild(banner);
+
+  // Falling decorations (skip if profile has no symbol — e.g. Halloween)
+  if (p.symbol) {
+  const decor = document.createElement('div');
+  decor.className = 'holiday-decor';
+  decor.setAttribute('aria-hidden', 'true');
+  const count = holiday === 'starwars' ? 60 : 22;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('span');
+    el.className = 'holiday-decor__item';
+    el.textContent = p.symbol;
+    el.style.left = (Math.random() * 100).toFixed(2) + '%';
+    el.style.top = (Math.random() * 100).toFixed(2) + '%';
+    el.style.animationDelay = (Math.random() * 12).toFixed(2) + 's';
+    el.style.animationDuration = (10 + Math.random() * 12).toFixed(2) + 's';
+    if (holiday !== 'starwars') el.style.fontSize = (16 + Math.random() * 14).toFixed(0) + 'px';
+    decor.appendChild(el);
+  }
+  document.body.appendChild(decor);
+  }
+
+  // Mascot accessory on hero flamingo + Bubba's rosette
+  // Hats are inline SVG <g> nodes designed in each host's viewBox coords
+  const flamingo = document.querySelector('.hero__flamingo');
+  if (flamingo && p.hatSVG) flamingo.insertAdjacentHTML('beforeend', p.hatSVG);
+  const rosetteSvg = document.querySelector('.awards__badge svg');
+  if (rosetteSvg && p.rosetteHat) rosetteSvg.insertAdjacentHTML('beforeend', p.rosetteHat);
+
+  // Copy overrides
+  if (p.hero?.tagline) {
+    const t = document.querySelector('.hero__tagline');
+    if (t) t.innerHTML = p.hero.tagline;
+  }
+  if (p.hero?.ctaText) {
+    const cta = document.querySelector('.hero__actions .btn-primary');
+    if (cta) {
+      // Preserve the arrow svg, replace only the text node
+      const textNodes = Array.from(cta.childNodes).filter(n => n.nodeType === 3);
+      textNodes.forEach(n => n.remove());
+      cta.insertBefore(document.createTextNode(' ' + p.hero.ctaText + ' '), cta.firstChild);
+    }
+  }
+  if (p.sections) {
+    for (const [selector, html] of Object.entries(p.sections)) {
+      const el = document.querySelector(selector);
+      if (el) el.innerHTML = html;
+    }
+  }
+
+  // Holiday chips added to Always in the case
+  if (p.chips) {
+    const cloud = document.querySelector('.chip-cloud');
+    if (cloud) {
+      p.chips.forEach(c => {
+        const chip = document.createElement('span');
+        chip.className = 'chip chip--holiday';
+        chip.setAttribute('data-tag', c.tag || 'NEW');
+        chip.textContent = c.name;
+        cloud.insertBefore(chip, cloud.firstChild);
+      });
+    }
+  }
+
+  // Holiday flip card added to the signature deck
+  if (p.deckCard) {
+    const deck = document.querySelector('.deck');
+    if (deck) deck.insertAdjacentHTML('beforeend', p.deckCard);
+  }
+
+  // Footer hail
+  if (p.footerHail) {
+    const hail = document.querySelector('.footer__hail');
+    if (hail) hail.innerHTML = p.footerHail;
   }
 })();
 </script>
