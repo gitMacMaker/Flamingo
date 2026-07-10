@@ -3352,4 +3352,84 @@ new MutationObserver(mutations => {
 
 
 
+<script>
+/* ============================================================
+   LIVE FLAVOR BOARD — reads the "Flamingo Crossing — Flavor Board"
+   Google Sheet. Edit the sheet, reload the site, board updates.
+   If the sheet is unreachable, the built-in list below stays.
+   ============================================================ */
+(function() {
+  var SHEET = 'https://docs.google.com/spreadsheets/d/11g9lKAbQb4LN5URB692F7XlayBOjDzWKmH_LSTii03E/gviz/tq?tqx=out:csv&cb=' + Date.now();
+  fetch(SHEET)
+    .then(function(r) { if (!r.ok) throw new Error('sheet unreachable'); return r.text(); })
+    .then(function(csv) {
+      /* Parse rows of quoted CSV cells: "Flavor","color" */
+      var rows = csv.split('\n').map(function(line) {
+        var cells = [];
+        var re = /"((?:[^"]|"")*)"/g, m;
+        while ((m = re.exec(line))) cells.push(m[1].replace(/""/g, '"').trim());
+        return cells;
+      }).filter(function(c, i) { return c.length && c[0] && i > 0; });
+
+      /* Sanity: a near-empty sheet should never wipe the board */
+      if (rows.length < 3) return;
+
+      /* Friendly color words -> palette-matched pastels (ink text stays readable) */
+      var COLORS = {
+        pink: 'oklch(0.94 0.08 8)', blue: 'oklch(0.94 0.08 205)',
+        green: 'oklch(0.94 0.09 115)', mint: 'oklch(0.94 0.09 115)',
+        orange: 'oklch(0.94 0.08 45)', yellow: 'oklch(0.95 0.09 95)',
+        purple: 'oklch(0.93 0.06 300)', lavender: 'oklch(0.93 0.06 300)',
+        red: 'oklch(0.92 0.09 25)', coffee: 'oklch(0.92 0.04 70)',
+        brown: 'oklch(0.92 0.04 70)', chocolate: 'oklch(0.9 0.05 60)',
+        white: '#ffffff', lime: 'oklch(0.95 0.11 120)'
+      };
+      function chipColor(word) {
+        if (!word) return null;
+        var w = word.toLowerCase().trim();
+        if (COLORS[w]) return COLORS[w];
+        /* allow any valid CSS color (hex, names) the owner types */
+        return (window.CSS && CSS.supports && CSS.supports('color', w)) ? w : null;
+      }
+      function isDark(colorStr) {
+        var c = document.createElement('canvas'); c.width = c.height = 1;
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 1, 1);
+        ctx.fillStyle = colorStr; ctx.fillRect(0, 0, 1, 1);
+        var d = ctx.getImageData(0, 0, 1, 1).data;
+        return (0.299 * d[0] + 0.587 * d[1] + 0.114 * d[2]) < 140;
+      }
+
+      var flavors = rows.map(function(r) { return r[0]; });
+
+      /* Chip cloud — keep holiday chips (they come first), swap the rest */
+      var cloud = document.querySelector('.chip-cloud');
+      if (cloud) {
+        cloud.querySelectorAll('.chip:not(.chip--holiday)').forEach(function(c) { c.remove(); });
+        rows.forEach(function(r) {
+          var s = document.createElement('span');
+          s.className = 'chip';
+          s.textContent = r[0];
+          var col = chipColor(r[1]);
+          if (col) {
+            s.style.background = col;
+            if (isDark(col)) s.style.color = '#FFF4E4';
+          }
+          cloud.appendChild(s);
+        });
+      }
+
+      /* Marquee — rebuild both duplicate halves */
+      var track = document.querySelector('.marquee__track');
+      if (track) {
+        var esc = function(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; };
+        var html = flavors.map(function(f) {
+          return esc(f) + ' <svg class="star" aria-hidden="true"><use href="#ms-star"></use></svg>';
+        }).join(' ');
+        track.querySelectorAll(':scope > span').forEach(function(sp) { sp.innerHTML = html; });
+      }
+    })
+    .catch(function() { /* built-in board stays — never break the page */ });
+})();
+</script>
 </body></html>
