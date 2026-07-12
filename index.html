@@ -2163,6 +2163,15 @@ body.holiday-starwars .hero__label {
   .fom__disc-inner .num { font-size: clamp(48px, 20vw, 80px); }
 }
 
+.footer__socialrow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.social-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 800; font-size: 13.5px;
+  background: var(--flamingo); color: var(--cream);
+  padding: 9px 20px; border-radius: 999px; text-decoration: none;
+  transition: transform 0.12s ease;
+}
+.social-btn:hover { transform: translateY(-2px); }
 </style>
 <script type="application/ld+json">
 {
@@ -2912,8 +2921,10 @@ body.holiday-starwars .hero__label {
         <li>1105 Duval St</li>
         <li>Key West, FL 33040</li>
         <li><a href="mailto:flamingocrossing@gmail.com">flamingocrossing@gmail.com</a></li>
-        <li><a href="https://www.facebook.com/flamingocrossing.keywest" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://www.instagram.com/flamingo_crossing/" target="_blank" rel="noopener">Instagram</a></li>
+        <li class="footer__socialrow">
+          <a class="social-btn" href="https://www.instagram.com/flamingo_crossing/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" style="vertical-align:-3px"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.4" fill="currentColor" stroke="none"/></svg> Instagram</a>
+          <a class="social-btn" href="https://www.facebook.com/flamingocrossing.keywest" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-3px"><path d="M15 8.5h2.6V5H15c-2.7 0-4.4 1.7-4.4 4.4v2.1H8v3.5h2.6V21h3.6v-6h2.7l.5-3.5h-3.2V9.6c0-.7.4-1.1 1.1-1.1z"/></svg> Facebook</a>
+        </li>
       </ul>
     </div>
     <div class="footer__col">
